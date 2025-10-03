@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tribute to Wangari Maathai</title>
+    <style>
+        /* CSS Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        /* Global Styles */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f9f9f9;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header Styles */
+        header {
+            background: linear-gradient(135deg, #2d5a27, #4a7c59);
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        header h1 {
+            font-size: 3rem;
+            margin-bottom: 0.5rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+        
+        header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+        
+        /* Navigation Styles */
+        nav {
+            background-color: #3a6b47;
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        
+        nav ul {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+        }
+        
+        nav li {
+            margin: 0 1rem;
+        }
+        
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+        }
+        
+        nav a:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+        
+        /* Main Content Styles */
+        main {
+            padding: 2rem 0;
+        }
+        
+        section {
+            margin-bottom: 3rem;
+            background-color: white;
+            border-radius: 8px;
+            padding: 2rem;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        }
+        
+        h2 {
+            color: #2d5a27;
+            border-bottom: 2px solid #4a7c59;
+            padding-bottom: 0.5rem;
+            margin-bottom: 1.5rem;
+            font-size: 2rem;
+        }
+        
+        h3 {
+            color: #4a7c59;
+            margin: 1.5rem 0 1rem;
+        }
+        
+        p {
+            margin-bottom: 1rem;
+            text-align: justify;
+        }
+        
+        /* Hero Section */
+        .hero {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+        
+        .hero-image {
+            flex: 1;
+            min-width: 300px;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        
+        .hero-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        
+        .hero-text {
+            flex: 2;
+            min-width: 300px;
+        }
+        
+        /* Timeline Section */
+        .timeline {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .timeline::after {
+            content: '';
+            position: absolute;
+            width: 6px;
+            background-color: #4a7c59;
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -3px;
+        }
+        
+        .timeline-item {
+            padding: 10px 40px;
+            position: relative;
+            width: 50%;
+            box-sizing: border-box;
+        }
+        
+        .timeline-item:nth-child(odd) {
+            left: 0;
+        }
+        
+        .timeline-item:nth-child(even) {
+            left: 50%;
+        }
+        
+        .timeline-content {
+            padding: 20px;
+            background-color: white;
+            border-radius: 6px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background-color: white;
+            border: 4px solid #4a7c59;
+            border-radius: 50%;
+            top: 15px;
+            z-index: 1;
+        }
+        
+        .timeline-item:nth-child(odd)::after {
+            right: -10px;
+        }
+        
+        .timeline-item:nth-child(even)::after {
+            left: -10px;
+        }
+        
+        /* Achievements Section */
+        .achievements {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+        
+        .achievement-card {
+            background-color: #f8f9fa;
+            border-left: 4px solid #4a7c59;
+            padding: 1.5rem;
+            border-radius: 4px;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .achievement-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .achievement-card h3 {
+            margin-top: 0;
+            color: #2d5a27;
+        }
+        
+        /* Gallery Section */
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 1rem;
+        }
+        
+        .gallery-item {
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+        
+        .gallery-item:hover {
+            transform: scale(1.05);
+        }
+        
+        .gallery-item img {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+            display: block;
+        }
+        
+        /* Quotes Section */
+        blockquote {
+            background-color: #f8f9fa;
+            border-left: 4px solid #4a7c59;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            font-style: italic;
+            border-radius: 0 4px 4px 0;
+        }
+        
+        blockquote footer {
+            margin-top: 1rem;
+            font-style: normal;
+            font-weight: bold;
+            color: #2d5a27;
+        }
+        
+        /* Footer Styles */
+        footer {
+            background-color: #2d5a27;
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+            margin-top: 2rem;
+        }
+        
+        .github-link {
+            display: inline-block;
+            background-color: #4a7c59;
+            color: white;
+            padding: 0.7rem 1.5rem;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: bold;
+            margin-top: 1rem;
+            transition: background-color 0.3s;
+        }
+        
+        .github-link:hover {
+            background-color: #3a6b47;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .timeline::after {
+                left: 31px;
+            }
+            
+            .timeline-item {
+                width: 100%;
+                padding-left: 70px;
+                padding-right: 25px;
+            }
+            
+            .timeline-item:nth-child(even) {
+                left: 0;
+            }
+            
+            .timeline-item::after {
+                left: 21px;
+            }
+            
+            .timeline-item:nth-child(odd)::after,
+            .timeline-item:nth-child(even)::after {
+                left: 21px;
+            }
+            
+            nav ul {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            nav li {
+                margin: 0.5rem 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Section -->
+    <header>
+        <div class="container">
+            <h1>Wangari Maathai</h1>
+            <p>Environmental Activist, Nobel Peace Prize Laureate, and Founder of the Green Belt Movement</p>
+        </div>
+    </header>
+    
+    <!-- Navigation -->
+    <nav>
+        <div class="container">
+            <ul>
+                <li><a href="#early-life">Early Life</a></li>
+                <li><a href="#career">Activism & Career</a></li>
+                <li><a href="#achievements">Achievements</a></li>
+                <li><a href="#legacy">Legacy</a></li>
+                <li><a href="#gallery">Gallery</a></li>
+            </ul>
+        </div>
+    </nav>
+    
+    <!-- Main Content -->
+    <main class="container">
+        <!-- Hero Section -->
+        <section id="hero">
+            <div class="hero">
+                <div class="hero-image">
+                    <img src="/militarycode/wangari photo.jpeg" alt="Wangari Maathai portrait">
+                </div>
+                <div class="hero-text">
+                    <h2>Champion of the Environment and Human Rights</h2>
+                    <p>Wangari Muta Maathai (1940-2011) was a Kenyan social, environmental, and political activist and the first African woman to win the Nobel Peace Prize. She founded the Green Belt Movement, an environmental non-governmental organization focused on planting trees, environmental conservation, and women's rights.</p>
+                    <p>Maathai was a pioneering figure who linked environmental protection with democracy, peace, and women's empowerment. Her work demonstrated the powerful connections between sustainable development, democracy, and peace.</p>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Early Life Section -->
+        <section id="early-life">
+            <h2>Early Life and Education</h2>
+            <p>Wangari Maathai was born on April 1, 1940, in the village of Ihithe in the central highlands of Kenya. She grew up in a rural farming family and developed a deep connection to the land from an early age.</p>
+            <p>Maathai was fortunate to receive an education at a time when few Kenyan girls attended school. She attended St. Cecilia's Intermediate Primary School and later the Loreto Girls' High School in Limuru.</p>
+            <p>In 1960, she earned a scholarship to study in the United States, where she obtained a bachelor's degree in biology from Mount St. Scholastica College and a master's degree in biological sciences from the University of Pittsburgh. She later earned a Ph.D. from the University of Nairobi, becoming the first woman in East and Central Africa to earn a doctorate degree.</p>
+        </section>
+        
+        <!-- Activism & Career Section -->
+        <section id="career">
+            <h2>Activism and Environmental Work</h2>
+            <p>Wangari Maathai's environmental activism began with a simple yet powerful idea: planting trees to address the needs of rural Kenyan women.</p>
+            
+            <h3>The Green Belt Movement</h3>
+            <p>In 1977, Maathai founded the Green Belt Movement, which focused on poverty reduction and environmental conservation through tree planting. The movement encouraged women to plant trees in their communities to combat deforestation, soil erosion, and lack of water.</p>
+            
+            <h3>Environmental and Political Activism</h3>
+            <p>Maathai's environmental work soon expanded to include advocacy for human rights, democracy, and peace. She recognized that environmental degradation was connected to poor governance and the disempowerment of ordinary citizens.</p>
+            
+            <h3>Political Career</h3>
+            <p>In 2002, Maathai was elected to the Kenyan parliament with 98% of the vote. She served as Assistant Minister for Environment and Natural Resources from 2003 to 2005, using her position to advance environmental policies and sustainable development.</p>
+        </section>
+        
+        <!-- Timeline Section -->
+        <section id="timeline">
+            <h2>Key Events in Her Life</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h3>1940</h3>
+                        <p>Born in Ihithe, Nyeri, Kenya</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h3>1960</h3>
+                        <p>Received scholarship to study in the United States</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h3>1971</h3>
+                        <p>Became first East African woman to earn a Ph.D.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h3>1977</h3>
+                        <p>Founded the Green Belt Movement</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h3>1991-1992</h3>
+                        <p>Led protests to save Uhuru Park and Karura Forest</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h3>2002</h3>
+                        <p>Elected to Kenyan Parliament</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h3>2003-2005</h3>
+                        <p>Served as Assistant Minister for Environment</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h3>2004</h3>
+                        <p>Awarded Nobel Peace Prize</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h3>2005</h3>
+                        <p>Elected Presiding Officer of the Economic, Social and Cultural Council of the African Union</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h3>2011</h3>
+                        <p>Died from ovarian cancer in Nairobi</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Achievements Section -->
+        <section id="achievements">
+            <h2>Notable Achievements and Honors</h2>
+            <div class="achievements">
+                <div class="achievement-card">
+                    <h3>Nobel Peace Prize</h3>
+                    <p>In 2004, Maathai became the first African woman to receive the Nobel Peace Prize for her contribution to sustainable development, democracy, and peace.</p>
+                </div>
+                <div class="achievement-card">
+                    <h3>Green Belt Movement</h3>
+                    <p>Founded the movement that planted over 50 million trees across Kenya, empowering communities and promoting environmental conservation.</p>
+                </div>
+                <div class="achievement-card">
+                    <h3>First Female Doctorate</h3>
+                    <p>Became the first woman in East and Central Africa to earn a doctorate degree.</p>
+                </div>
+                <div class="achievement-card">
+                    <h3>UN Messenger of Peace</h3>
+                    <p>Appointed United Nations Messenger of Peace in 2009, with a focus on environmental issues and climate change.</p>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Legacy Section -->
+        <section id="legacy">
+            <h2>Legacy and Impact</h2>
+            <p>Wangari Maathai left an enduring legacy that continues to inspire environmentalists, human rights activists, and women leaders worldwide.</p>
+            
+            <h3>Environmental Conservation</h3>
+            <p>Her Green Belt Movement demonstrated how community-based environmental conservation can address both ecological and social challenges. The movement has been replicated in other African countries and inspired similar initiatives globally.</p>
+            
+            <h3>Women's Empowerment</h3>
+            <p>Maathai showed how environmental work could empower women economically and socially. By paying women to plant and care for trees, the Green Belt Movement provided income while restoring the environment.</p>
+            
+            <h3>Democratic Advocacy</h3>
+            <p>She courageously stood against authoritarian rule in Kenya, linking environmental protection to democratic governance and human rights.</p>
+            
+            <blockquote>
+                <p>"It's the little things citizens do. That's what will make the difference. My little thing is planting trees."</p>
+                <footer>— Wangari Maathai</footer>
+            </blockquote>
+        </section>
+        
+        <!-- Gallery Section -->
+        <section id="gallery">
+            <h2>Gallery</h2>
+            <div class="gallery">
+                <div class="gallery-item">
+                    <img src="/wangari3.jpeg" alt="Wangari Maathai portrait">
+                </div>
+                <div class="gallery-item">
+                    <img src="/wangari4.jpeg" alt="Wangari Maathai planting a tree">
+                </div>
+                <div class="gallery-item">
+                    <img src="/wangari5.jpeg" alt="Wangari Maathai with Nobel Prize">
+                </div>
+                <div class="gallery-item">
+                    <img src="/militarycode/wangari photo.jpeg" alt="Wangari Maathai with community">
+                </div>
+            </div>
+        </section>
+    </main>
+    
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>Tribute to Wangari Maathai - Environmental Champion and Nobel Laureate</p>
+            <p>Created for Internet Programming Assignment</p>
+           
+        </div>
+    </footer>
+    
+    <script>
+        // Simple image fallback in case external images don't load
+        document.addEventListener('DOMContentLoaded', function() {
+            const images = document.querySelectorAll('img');
+            images.forEach(img => {
+                img.onerror = function() {
+                    this.src = 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjZGRkIi8+PHRleHQgeD0iNTAlIiB5PSI1MCUiIGZvbnQtc2l6ZT0iMTgiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGR5PSIuM2VtIiBmaWxsPSIjOTk5Ij5JbWFnZSBub3QgZm91bmQ8L3RleHQ+PC9zdmc+';
+                };
+            });
+        });
+    </script>
+</body>
+</html>
